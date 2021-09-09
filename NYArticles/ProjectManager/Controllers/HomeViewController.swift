@@ -70,7 +70,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: appIdentifiers.MostViewedArticlesCell.rawValue, for: indexPath) as! MostViewedArticlesCell
         
-        cell.articles = self.viewModel.articlesListArray[indexPath.row]
+        cell.articles = self.viewModel.isSearching ? self.viewModel.filterArticlesList[indexPath.row] : self.viewModel.articlesListArray[indexPath.row]
         
         return cell
     }
