@@ -81,7 +81,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = self.storyboard?.instantiateViewController(identifier: "DetailViewController") as! DetailViewController
-        controller.urlString = self.viewModel.articlesListArray[indexPath.row].url ?? ""
+        
+        let article = self.viewModel.isSearching ? self.viewModel.filterArticlesList[indexPath.row] : self.viewModel.articlesListArray[indexPath.row]
+        controller.urlString = article.url ?? ""
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
